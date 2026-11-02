@@ -255,3 +255,48 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.75); }
 #order-message.ok { color: #7fd69a; }
 #order-message.error { color: #ff8a7a; }
 body { padding-bottom: 5rem; }
+
+/* Add button: round, thin plus */
+.add-btn {
+  position: relative;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--red);
+  border-radius: 50%;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.add-btn::before,
+.add-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--red-soft);
+  transition: background-color 0.2s;
+}
+.add-btn::before { width: 12px; height: 1.5px; transform: translate(-50%, -50%); }
+.add-btn::after  { width: 1.5px; height: 12px; transform: translate(-50%, -50%); }
+.add-btn:hover { background: var(--red); border-color: var(--red); transform: none; }
+.add-btn:hover::before,
+.add-btn:hover::after { background: #fff; }
+
+/* Quantity control: - 1 + */
+.qty { gap: 0; }
+.qty:has(> button:not(.add-btn)) {
+  border: 1px solid var(--red);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.qty button:not(.add-btn) {
+  min-width: 2rem;
+  padding: 0.2rem 0;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--cream);
+  border: none;
+  border-radius: 0;
+}
+.qty button:not(.add-btn):hover { background: var(--red); transform: none; }
+.qty span { min-width: 1.8rem; font-size: 0.9rem; }

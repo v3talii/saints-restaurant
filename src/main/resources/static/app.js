@@ -45,7 +45,7 @@ function makeControls(item) {
       const add = document.createElement("button");
       add.type = "button";
       add.className = "add-btn";
-      add.textContent = "Add";
+      add.setAttribute("aria-label", "Add " + item.name + " to order");
       add.addEventListener("click", () => setQty(item, 1));
       box.appendChild(add);
       return;
