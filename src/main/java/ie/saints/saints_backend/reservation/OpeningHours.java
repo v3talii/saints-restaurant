@@ -10,10 +10,15 @@ import java.util.TreeMap;
 public final class OpeningHours {
 
     private static final int LAST_BOOKING_BEFORE_CLOSE_MIN = 60;
+    private static final int LAST_PICKUP_BEFORE_CLOSE_MIN = 15;
 
     public record Hours(LocalTime open, LocalTime close) {
         public LocalTime lastBooking() {
             return close.minusMinutes(LAST_BOOKING_BEFORE_CLOSE_MIN);
+        }
+
+        public LocalTime lastPickup() {
+            return close.minusMinutes(LAST_PICKUP_BEFORE_CLOSE_MIN);
         }
     }
 

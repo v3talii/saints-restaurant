@@ -19,6 +19,7 @@
       <a href="#hours">Hours</a>
       <a href="#booking">Book</a>
       <a href="#menu">Menu</a>
+      <a href="#menu">Takeaway</a>
       <a href="#find-us">Find Us</a>
     </nav>
   </header>
@@ -94,6 +95,10 @@
     <section id="menu" class="reveal">
       <p class="eyebrow">Our kitchen</p>
       <h2>Menu</h2>
+      <div class="takeaway-banner">
+        <strong>Takeaway available</strong>
+        <span>Every item on the menu. Tap <b>Add</b>, then place your order below.</span>
+      </div>
       <div id="menu-container">Loading menu...</div>
       <p class="note strong">All of our beef and pork is 100% Irish. Gluten free options available.<br>
         Gift vouchers available. Kids menu price includes kids ice cream (7).</p>
@@ -135,6 +140,34 @@
     <p>Email: saintsbar.reservations@gmail.com</p>
     <p class="copy">© Saints Bar &amp; Restaurant</p>
   </footer>
+
+  <div id="cart-bar" class="cart-bar" hidden>
+    <button type="button" id="cart-open">
+      View order · <span id="cart-count">0</span> items · <span id="cart-total">€0.00</span>
+    </button>
+  </div>
+  <dialog id="order-dialog">
+    <div class="dialog-head">
+      <h3>Your takeaway order</h3>
+      <button type="button" id="order-close" class="icon-btn" aria-label="Close">×</button>
+    </div>
+    <div id="order-lines"></div>
+    <p class="order-total">Total <strong id="order-total">€0.00</strong></p>
+    <p class="note">Pay when you collect. We will call you to confirm your order.</p>
+    <form id="order-form" novalidate>
+      <label>Name <input type="text" name="name" required autocomplete="name"></label>
+      <label>Phone <input type="tel" name="phone" required autocomplete="tel"></label>
+      <div class="row">
+        <label>Pickup date <input type="date" name="date" required></label>
+        <label>Pickup time <input type="time" name="time" required></label>
+      </div>
+      <label>Notes or extras
+        <textarea name="notes" rows="3" placeholder="e.g. add chicken to the Caesar salad"></textarea>
+      </label>
+      <button type="submit">Place Order</button>
+      <p id="order-message" role="status"></p>
+    </form>
+  </dialog>
 
   <script src="app.js"></script>
 </body>

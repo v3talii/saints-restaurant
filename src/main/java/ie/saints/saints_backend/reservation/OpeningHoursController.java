@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class OpeningHoursController {
 
     // jsDay matches JavaScript getDay(): Sunday = 0 ... Saturday = 6
-    public record DayHours(int jsDay, String day, String open, String close, String lastBooking) {}
+    public record DayHours(int jsDay, String day, String open, String close,
+                           String lastBooking, String lastPickup) {}
 
     @GetMapping
     public List<DayHours> get() {
@@ -22,7 +23,8 @@ public class OpeningHoursController {
                         e.getKey().getDisplayName(TextStyle.FULL, Locale.ENGLISH),
                         e.getValue().open().toString(),
                         e.getValue().close().toString(),
-                        e.getValue().lastBooking().toString()))
+                        e.getValue().lastBooking().toString(),
+                        e.getValue().lastPickup().toString()))
                 .toList();
     }
 }

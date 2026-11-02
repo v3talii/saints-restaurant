@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MenuController {
 
     // Public JSON shape (kept separate from entities)
-    public record ItemDto(String name, String description, BigDecimal price,
+    public record ItemDto(Long id, String name, String description, BigDecimal price,
                           String allergens, String note) {}
     public record CategoryDto(String name, List<ItemDto> items) {}
 
@@ -29,7 +29,7 @@ public class MenuController {
                 .map(category -> new CategoryDto(
                         category.getName(),
                         items.findByCategoryOrderBySortOrderAsc(category).stream()
-                                .map(i -> new ItemDto(i.getName(), i.getDescription(),
+                                .map(i -> new ItemDto(i.getId(), i.getName(), i.getDescription(),
                                         i.getPrice(), i.getAllergens(), i.getNote()))
                                 .toList()))
                 .toList();
